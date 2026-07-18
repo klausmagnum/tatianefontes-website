@@ -192,6 +192,29 @@ footer ul a:hover{color:var(--blue-light)}
 .wa-float svg{width:32px;height:32px;fill:#fff}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5),0 14px 30px -8px rgba(37,211,102,.6)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0),0 14px 30px -8px rgba(37,211,102,.6)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 14px 30px -8px rgba(37,211,102,.6)}}
 
+/* ---------- NEWS ---------- */
+.news{background:var(--bg-soft)}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:.35s;position:relative;overflow:hidden}
+.news-card::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--navy),var(--blue));transform:scaleX(0);transform-origin:left;transition:.4s}
+.news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.news-card:hover::before{transform:scaleX(1)}
+.news-date{font-size:.74rem;font-weight:600;letter-spacing:.5px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.news-date svg{width:14px;height:14px}
+.news-card h3{font-family:'Jost';font-weight:500;font-size:1.12rem;color:var(--navy);line-height:1.32;margin-bottom:10px}
+.news-card p{font-size:.88rem;color:var(--muted);flex:1;margin-bottom:16px}
+.news-read{font-size:.85rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:6px;transition:.3s}
+.news-card:hover .news-read{gap:11px}
+.news-foot{text-align:center;margin-top:34px}
+.news-more{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:12px 26px;border-radius:100px;transition:.3s}
+.news-more:hover{box-shadow:var(--shadow-sm);color:var(--blue);transform:translateY(-2px)}
+.news-source{margin-top:14px;font-size:.76rem;color:var(--muted)}
+.news-skeleton{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.sk-line{height:12px;border-radius:6px;background:linear-gradient(90deg,#eef0f5,#f6f8fb,#eef0f5);background-size:200% 100%;animation:shimmer 1.4s infinite;margin-bottom:12px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.news-error{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px;background:#fff;border:1px dashed var(--line);border-radius:var(--radius)}
+.news-error a{color:var(--blue);font-weight:600}
+
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -205,7 +228,7 @@ footer ul a:hover{color:var(--blue-light)}
   .hero-emblem{width:280px;height:280px}
   .hero-emblem .logo{height:160px}
   .about-wrap,.map-wrap{grid-template-columns:1fr;gap:40px}
-  .cards,.tool-grid{grid-template-columns:repeat(2,1fr)}
+  .cards,.tool-grid,.news-grid{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr}
   .stats-inner{grid-template-columns:repeat(2,1fr);gap:30px}
 }
@@ -220,7 +243,7 @@ footer ul a:hover{color:var(--blue-light)}
   .mobile-menu a{color:var(--navy);padding:12px 14px;border-radius:12px;font-size:1rem;font-weight:500}
   .mobile-menu a:hover{background:var(--bg-soft)}
   .mobile-menu .btn-primary{margin-top:8px;justify-content:center}
-  .cards,.tool-grid,.pillars{grid-template-columns:1fr}
+  .cards,.tool-grid,.pillars,.news-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .section-head{margin-bottom:2.4rem}
 }
@@ -238,6 +261,7 @@ footer ul a:hover{color:var(--blue-light)}
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#ferramentas">Ferramentas</a></li>
       <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#noticias">Notícias</a></li>
       <li><a href="#localizacao">Localização</a></li>
     </ul>
     <a href="https://wa.me/5584998157927?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Tatiane%20Fontes%20Assessoria." class="nav-cta desk" target="_blank" rel="noopener">
@@ -250,6 +274,7 @@ footer ul a:hover{color:var(--blue-light)}
     <a href="#servicos">Serviços</a>
     <a href="#ferramentas">Ferramentas Úteis</a>
     <a href="#sobre">Sobre</a>
+    <a href="#noticias">Notícias</a>
     <a href="#localizacao">Localização</a>
     <a href="https://wa.me/5584998157927" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
   </nav>
@@ -405,6 +430,22 @@ footer ul a:hover{color:var(--blue-light)}
   </div>
 </section>
 
+<!-- NOTICIAS -->
+<section class="section news" id="noticias">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Fique por dentro</span>
+      <h2>Últimas notícias</h2>
+      <p>Novidades do mundo contábil, tributário e fiscal — atualizadas automaticamente para você.</p>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+    <div class="news-foot">
+      <a href="https://www.contabeis.com.br/noticias/" target="_blank" rel="noopener" class="news-more">Ver todas as notícias →</a>
+      <p class="news-source">Fonte: Portal Contábeis</p>
+    </div>
+  </div>
+</section>
+
 <!-- PARTNERS (oculto ate receber as logos reais) -->
 <section class="section partners" style="display:none">
   <div class="container">
@@ -481,6 +522,7 @@ footer ul a:hover{color:var(--blue-light)}
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#ferramentas">Ferramentas Úteis</a></li>
         <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#noticias">Notícias</a></li>
         <li><a href="#localizacao">Localização</a></li>
       </ul>
     </div>
@@ -533,6 +575,28 @@ const cs=new IntersectionObserver((es)=>es.forEach(e=>{
     cs.unobserve(el);}
 }),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cs.observe(el));
+
+// ultimas noticias (Portal Contabeis via /api/noticias)
+(function(){
+  const grid=document.getElementById('newsGrid');
+  if(!grid) return;
+  const sk='<div class="news-skeleton"><div class="sk-line" style="width:40%"></div><div class="sk-line" style="width:92%"></div><div class="sk-line" style="width:82%"></div><div class="sk-line" style="width:55%"></div></div>';
+  grid.innerHTML=Array.from({length:6}).map(()=>sk).join('');
+  const esc=(s)=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const fmt=(s)=>{const d=new Date(s);if(isNaN(d))return '';return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'});};
+  const cal='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>';
+  fetch('/api/noticias').then(r=>r.json()).then(d=>{
+    if(!d||!d.ok||!d.items||!d.items.length) throw new Error('vazio');
+    grid.innerHTML=d.items.slice(0,6).map(n=>
+      '<a class="news-card in" href="'+encodeURI(n.link)+'" target="_blank" rel="noopener">'+
+      '<span class="news-date">'+cal+fmt(n.pubDate)+'</span>'+
+      '<h3>'+esc(n.title)+'</h3>'+
+      '<p>'+esc(n.desc)+'</p>'+
+      '<span class="news-read">Ler mais →</span></a>').join('');
+  }).catch(()=>{
+    grid.innerHTML='<div class="news-error">Não foi possível carregar as notícias agora. <a href="https://www.contabeis.com.br/noticias/" target="_blank" rel="noopener">Ver no Portal Contábeis →</a></div>';
+  });
+})();
 </script>
 </body>
 </html>
