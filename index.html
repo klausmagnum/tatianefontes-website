@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatiane Fontes - Assessoria Contábil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2a4e;
+            --navy-light: #2a3f5f;
+            --accent: #6b5b95;
+            --accent-light: #b89cc4;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --text: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 42, 78, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+
+        .logo span {
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a4e 0%, #2a3f5f 50%, #6b5b95 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .logo-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b89cc4 0%, #d4a5dd 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(184, 156, 196, 0.4);
+        }
+
+        /* SERVIÇOS */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 4rem;
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f4f8 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid #e0e8f0;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6b5b95 0%, #b89cc4 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(26, 42, 78, 0.1);
+            border-color: #6b5b95;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f4f8 100%);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight h4 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: #f8f9fb;
+            border-radius: 10px;
+            border: 1px solid #e0e8f0;
+        }
+
+        .contact-method strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: #6b5b95;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: #1a2a4e;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                margin-top: 100px;
+                min-height: calc(100vh - 100px);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-large {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .services {
+                padding: 3rem 1rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">TF <span>Assessoria</span></div>
+        <nav>
+            <a href="#services">Serviços</a>
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-large">TF</div>
+            <h1>Tatiane Fontes</h1>
+            <p class="subtitle">Assessoria Contábil</p>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 2rem;">Soluções contábeis e tributárias para seu negócio crescer com segurança</p>
+            <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços" class="cta-button">Conversar no WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="services" class="services">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="section-subtitle">Soluções completas para sua empresa</p>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">📊</div>
+                <h3>Contábil</h3>
+                <p>Gestão contábil completa, demonstrações financeiras e análise de resultados para tomada de decisão estratégica.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">🧾</div>
+                <h3>Imposto de Renda</h3>
+                <p>Planejamento e declaração de Imposto de Renda Pessoa Jurídica e Pessoa Física com otimização fiscal.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">⚖️</div>
+                <h3>Tributário</h3>
+                <p>Planejamento tributário estratégico para reduzir legalmente sua carga fiscal e aumentar competitividade.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">👥</div>
+                <h3>Trabalhista</h3>
+                <p>Gestão de folha de pagamento, conformidade trabalhista e assessoria em relações trabalhistas.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">💡</div>
+                <h3>Consultoria</h3>
+                <p>Consultoria estratégica personalizada para otimizar processos e aumentar a rentabilidade do seu negócio.</p>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">🏢</div>
+                <h3>Societário</h3>
+                <p>Assessoria em constituição de empresas, fusões, aquisições e reorganizações societárias.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <h2 class="section-title">Por Que Escolher a Tatiane Fontes?</h2>
+
+        <div class="about-content">
+            <p>Com anos de experiência no mercado contábil, somos especialistas em oferecer soluções estratégicas que vão além da conformidade fiscal. Nossa abordagem é consultiva, próxima e totalmente personalizada às necessidades da sua empresa.</p>
+
+            <div class="highlights">
+                <div class="highlight fade-in">
+                    <h4>🎯 Expert</h4>
+                    <p>Profissionais altamente qualificados e atualizados</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>🤝 Próxima</h4>
+                    <p>Relacionamento consultivo e personalizado</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>💼 Confiável</h4>
+                    <p>Ética, segurança e sigilo profissional garantido</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>⚡ Moderna</h4>
+                    <p>Uso de tecnologia para eficiência e precisão</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Vamos Conversar?</h2>
+        <p>Estamos prontos para ajudar seu negócio a crescer com segurança fiscal e estratégia tributária inteligente.</p>
+
+        <div class="contact-methods">
+            <div class="contact-method fade-in">
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços">(84) 2010-0067</a>
+            </div>
+            <div class="contact-method fade-in">
+                <strong>Email</strong>
+                <a href="mailto:tatiane.fontes@tatianefontes.com">tatiane.fontes@tatianefontes.com</a>
+            </div>
+            <div class="contact-method fade-in">
+                <strong>Telefone</strong>
+                <a href="tel:+558420100067">(84) 2010-0067</a>
+            </div>
+        </div>
+
+        <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços" class="cta-button">Iniciar Conversa</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Tatiane Fontes Assessoria Contábil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
