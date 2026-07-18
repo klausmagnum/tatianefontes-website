@@ -71,7 +71,10 @@ header.nav{position:fixed;inset:0 0 auto 0;z-index:100}
 .hero-copy{animation:rise .9s ease both}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
   padding:8px 16px;border-radius:100px;font-size:.8rem;letter-spacing:.5px;margin-bottom:26px}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7ee0a8;box-shadow:0 0 0 4px rgba(126,224,168,.25)}
+.hero-badge .dot{position:relative;width:9px;height:9px;border-radius:50%;background:#3ee08a;box-shadow:0 0 8px rgba(62,224,138,.9);animation:beat 1.8s ease-in-out infinite}
+.hero-badge .dot::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #3ee08a;animation:radar 1.8s ease-out infinite}
+@keyframes radar{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.6);opacity:0}}
+@keyframes beat{0%,100%{transform:scale(1)}45%{transform:scale(1.25)}}
 .hero h1{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;margin-bottom:22px}
 .hero h1 b{font-weight:500;background:linear-gradient(120deg,#fff,var(--blue-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero p.lead{font-size:1.15rem;color:rgba(255,255,255,.82);max-width:520px;margin-bottom:36px}
