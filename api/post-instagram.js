@@ -42,8 +42,19 @@ export default async function handler(req, res) {
     const tag = TAGS[Math.floor(Math.random() * TAGS.length)];
 
     const base = `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
+
+    // busca foto do Pexels baseado na manchete
+    let photoUrl = '';
+    try {
+      const keyword = extractKeyword(chosen.title);
+      const photoRes = await fetch(`${base}/api/photo?q=${encodeURIComponent(keyword)}`);
+      const photoData = await photoRes.json();
+      if (photoData.ok && photoData.photo) photoUrl = photoData.photo;
+    } catch { /* se falhar, segue sem foto */ }
+
     const imgUrl = `${base}/api/card?` + new URLSearchParams({
       t: chosen.title, s: chosen.desc, tag, v: String(variant), bg,
+      p: photoUrl || '',
     }).toString();
 
     const caption = buildCaption(chosen);
@@ -144,4 +155,13 @@ function buildCaption(it) {
     'Fonte: Portal Contábeis',
     HASHTAGS,
   ].filter(Boolean).join('\n\n');
+}
+
+function extractKeyword(title) {
+  // extrai a palavra-chave principal do título para buscar foto relevante
+  const words = title.toLowerCase().split(/\s+/);
+  const stopwords = ['a', 'o', 'de', 'e', 'é', 'em', 'para', 'como', 'que', 'do', 'da', 'dos', 'das', 'à', 'ao', 'os', 'as', 'mais', 'foi', 'seja', 'ou', 'um', 'uma'];
+  let keyword = words.find(w => w.length > 4 && !stopwords.includes(w));
+  if (!keyword) keyword = words.find(w => w.length > 3) || 'contabilidade';
+  return keyword || 'contabilidade';
 }

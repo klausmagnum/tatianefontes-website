@@ -11,6 +11,7 @@ export default async function handler(req, res) {
       tag: (q.tag || 'FIQUE POR DENTRO').toString(),
       variant: parseInt(q.v || '0', 10) || 0,
       bg: (q.bg || 'plain').toString(),
+      photoUrl: (q.p || '').toString(),
     });
     res.setHeader('Content-Type', 'image/jpeg');
     res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=86400');
