@@ -60,6 +60,10 @@ export default async function handler(req, res) {
     const caption = buildCaption(chosen);
 
     const creationId = await igCreateMedia(igId, token, imgUrl, caption);
+
+    // aguarda processamento da imagem (Instagram precisa de tempo)
+    await new Promise(r => setTimeout(r, 2000));
+
     const mediaId = await igPublish(igId, token, creationId);
 
     await redis.sadd('ig_posted', chosen.id);
