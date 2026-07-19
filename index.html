@@ -1,562 +1,582 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tatiane Fontes | Assessoria Contábil</title>
-<meta name="description" content="Assessoria contábil, tributária e trabalhista com atendimento próximo e estratégico. Contabilidade que faz seu negócio crescer com segurança.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#16223d;
-  --navy-2:#1e2c4c;
-  --navy-3:#26375e;
-  --lilac:#8b7bb0;
-  --lilac-2:#a98fc9;
-  --rose:#e0a9c4;
-  --ink:#243049;
-  --muted:#6c7890;
-  --line:#e7eaf1;
-  --bg:#ffffff;
-  --bg-soft:#f6f7fb;
-  --white:#ffffff;
-  --radius:18px;
-  --shadow:0 20px 50px -20px rgba(22,34,61,.25);
-  --shadow-sm:0 8px 24px -12px rgba(22,34,61,.2);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.display{font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.5px;line-height:1.15}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{width:min(1180px,92%);margin-inline:auto}
-.eyebrow{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--lilac)}
-.section{padding:clamp(4rem,9vw,7rem) 0}
-.section-head{text-align:center;max-width:640px;margin:0 auto clamp(2.5rem,5vw,4rem)}
-.section-head h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--navy);margin:.6rem 0 .8rem}
-.section-head p{color:var(--muted);font-size:1.05rem}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatiane Fontes - Assessoria Contábil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ---------- LOGO SVG ---------- */
-.logo-mark{width:auto;height:100%}
-.logo-mark line{stroke-linecap:round}
+        :root {
+            --navy: #1a2a4e;
+            --navy-light: #2a3f5f;
+            --accent: #6b5b95;
+            --accent-light: #b89cc4;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --text: #2c3e50;
+        }
 
-/* ---------- NAV ---------- */
-header.nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:.35s}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;
-  background:rgba(22,34,61,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:0 12px 0 26px;margin-top:14px;
-  box-shadow:0 10px 40px -18px rgba(0,0,0,.5);transition:.35s}
-.brand{display:flex;align-items:center;gap:12px;color:#fff}
-.brand .logo-mark{height:34px}
-.brand .logo-mark line{stroke:#fff;stroke-width:5}
-.brand-text{display:flex;flex-direction:column;line-height:1}
-.brand-text b{font-family:'Jost';font-weight:500;font-size:1.05rem;letter-spacing:2px}
-.brand-text .sub{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-top:3px}
-.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.82);font-size:.92rem;font-weight:400;position:relative;transition:.25s}
-.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--rose);transition:.3s;border-radius:2px}
-.nav-links a:hover{color:#fff}
-.nav-links a:hover::after{width:100%}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,var(--lilac),var(--rose));
-  color:#fff;font-weight:600;font-size:.9rem;padding:12px 22px;border-radius:100px;transition:.3s;box-shadow:0 8px 24px -8px rgba(224,169,196,.7)}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(224,169,196,.85)}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
-.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
 
-/* ---------- HERO ---------- */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;
-  background:linear-gradient(160deg,#141f38 0%,#1b2947 45%,#2a2c53 100%);color:#fff;overflow:hidden;padding-top:120px}
-.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:0}
-.blob.b1{width:520px;height:520px;background:radial-gradient(circle,#6a5a99,transparent 65%);top:-160px;right:-120px;animation:drift 14s ease-in-out infinite}
-.blob.b2{width:440px;height:440px;background:radial-gradient(circle,#d98fb4,transparent 65%);bottom:-160px;left:-120px;animation:drift 18s ease-in-out infinite reverse}
-.blob.b3{width:360px;height:360px;background:radial-gradient(circle,#4a6bb0,transparent 65%);top:40%;left:45%;animation:drift 20s ease-in-out infinite}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,50px)}}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%);z-index:0}
-.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
-.hero-copy{animation:rise .9s ease both}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
-  padding:8px 16px;border-radius:100px;font-size:.8rem;letter-spacing:.5px;margin-bottom:26px}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7ee0a8;box-shadow:0 0 0 4px rgba(126,224,168,.25)}
-.hero h1{font-size:clamp(2.6rem,5.5vw,4.3rem);font-weight:300;margin-bottom:22px}
-.hero h1 b{font-weight:500;background:linear-gradient(120deg,#fff,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p.lead{font-size:1.15rem;color:rgba(255,255,255,.8);max-width:520px;margin-bottom:36px}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:15px 30px;border-radius:100px;transition:.3s;cursor:pointer;border:0}
-.btn-primary{background:linear-gradient(120deg,var(--lilac),var(--rose));color:#fff;box-shadow:0 14px 34px -12px rgba(224,169,196,.75)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(224,169,196,.9)}
-.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.2)}
-.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
-.hero-visual{display:flex;justify-content:center;animation:rise 1.1s ease both}
-.hero-emblem{position:relative;width:340px;height:340px;display:grid;place-items:center}
-.hero-emblem .ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
-.hero-emblem .ring.r1{inset:0;animation:spin 26s linear infinite}
-.hero-emblem .ring.r2{inset:34px;border-style:dashed;border-color:rgba(224,169,196,.28);animation:spin 34s linear infinite reverse}
-.hero-emblem .ring.r3{inset:70px;border-color:rgba(255,255,255,.1)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero-emblem .glass{width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);display:grid;place-items:center;box-shadow:inset 0 0 40px rgba(255,255,255,.06)}
-.hero-emblem .logo-mark{height:120px}
-.hero-emblem .logo-mark line{stroke:#fff;stroke-width:4;stroke-dasharray:200;stroke-dashoffset:200;animation:draw 2s ease .3s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
-.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-hint .mouse{width:22px;height:36px;border:2px solid rgba(255,255,255,.4);border-radius:12px;position:relative}
-.scroll-hint .mouse::after{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:7px;background:rgba(255,255,255,.6);border-radius:2px;animation:wheel 1.6s ease infinite}
-@keyframes wheel{0%{opacity:1;top:7px}70%{opacity:0;top:16px}100%{opacity:0}}
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 42, 78, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* ---------- STATS BAR ---------- */
-.stats{background:var(--navy);color:#fff;padding:0}
-.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:38px 0;border-top:1px solid rgba(255,255,255,.08)}
-.stat{text-align:center}
-.stat b{font-family:'Jost';font-size:2.4rem;font-weight:500;display:block;background:linear-gradient(120deg,#fff,var(--rose));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat span{font-size:.85rem;color:rgba(255,255,255,.6);letter-spacing:.5px}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
 
-/* ---------- SERVICES ---------- */
-.services{background:var(--bg-soft)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;transition:.35s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--lilac),var(--rose));transform:scaleX(0);transform-origin:left;transition:.4s}
-.card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
-.card:hover::before{transform:scaleX(1)}
-.card .ic{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;
-  background:linear-gradient(135deg,#eef0f8,#f7eef4);color:var(--lilac);transition:.35s}
-.card:hover .ic{background:linear-gradient(135deg,var(--lilac),var(--rose));color:#fff}
-.card .ic svg{width:26px;height:26px}
-.card h3{font-size:1.35rem;color:var(--navy);margin-bottom:10px;font-weight:500}
-.card p{color:var(--muted);font-size:.95rem}
+        .logo span {
+            font-weight: 700;
+        }
 
-/* ---------- TOOLS ---------- */
-.tools{background:linear-gradient(160deg,#16223d,#22284a);color:#fff}
-.tools .section-head h2{color:#fff}
-.tools .section-head p{color:rgba(255,255,255,.7)}
-.tools .eyebrow{color:var(--rose)}
-.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.tool{display:block;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);
-  padding:30px 24px;transition:.35s}
-.tool:hover{background:rgba(255,255,255,.1);transform:translateY(-8px);border-color:rgba(224,169,196,.5)}
-.tool .ic{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
-  background:linear-gradient(135deg,rgba(139,123,176,.35),rgba(224,169,196,.35));color:#fff}
-.tool .ic svg{width:24px;height:24px}
-.tool h3{font-size:1.15rem;font-weight:500;margin-bottom:6px}
-.tool p{font-size:.85rem;color:rgba(255,255,255,.62)}
-.tool .arrow{margin-top:16px;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--rose);font-weight:600;transition:.3s}
-.tool:hover .arrow{gap:12px}
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
 
-/* ---------- ABOUT / PILLARS ---------- */
-.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-copy h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--navy);margin:.6rem 0 1.2rem}
-.about-copy p{color:var(--muted);margin-bottom:16px}
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.pillar{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px}
-.pillar .ic{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--lilac),var(--rose));color:#fff;display:grid;place-items:center;margin-bottom:14px}
-.pillar .ic svg{width:22px;height:22px}
-.pillar h4{font-family:'Jost';font-weight:500;color:var(--navy);font-size:1.15rem;margin-bottom:6px}
-.pillar p{font-size:.86rem;color:var(--muted)}
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
 
-/* ---------- PARTNERS ---------- */
-.partners{background:var(--bg-soft)}
-.partner-row{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
-.partner{width:170px;height:90px;background:#fff;border:1px solid var(--line);border-radius:14px;display:grid;place-items:center;color:var(--muted);font-weight:600;letter-spacing:1px;transition:.3s;text-align:center}
-.partner:hover{box-shadow:var(--shadow-sm);color:var(--lilac)}
-.partner small{display:block;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;opacity:.6;font-weight:400}
+        nav a:hover {
+            opacity: 1;
+        }
 
-/* ---------- LOCATION ---------- */
-.map-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
-.map-info{display:flex;flex-direction:column;justify-content:center}
-.map-info h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--navy);margin:.6rem 0 1.2rem}
-.contact-line{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.contact-line .ic{width:44px;height:44px;flex:none;border-radius:11px;background:linear-gradient(135deg,#eef0f8,#f7eef4);color:var(--lilac);display:grid;place-items:center}
-.contact-line .ic svg{width:20px;height:20px}
-.contact-line b{display:block;color:var(--navy);font-family:'Jost';font-weight:500;font-size:1.02rem}
-.contact-line a,.contact-line span{color:var(--muted);font-size:.94rem}
-.contact-line a:hover{color:var(--lilac)}
-.map-frame{border-radius:var(--radius);overflow:hidden;min-height:380px;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
-.map-frame iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.2) contrast(1.05)}
+        /* HERO */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a4e 0%, #2a3f5f 50%, #6b5b95 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
 
-/* ---------- CTA BANNER ---------- */
-.cta-banner{background:linear-gradient(120deg,#1a2743,#33274f);color:#fff;text-align:center;border-radius:26px;padding:clamp(3rem,6vw,5rem);position:relative;overflow:hidden}
-.cta-banner::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(224,169,196,.4),transparent 65%);top:-150px;right:-100px;filter:blur(40px)}
-.cta-banner h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:14px;position:relative}
-.cta-banner p{color:rgba(255,255,255,.78);max-width:520px;margin:0 auto 32px;position:relative}
-.cta-banner .btn{position:relative}
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
 
-/* ---------- FOOTER ---------- */
-footer{background:var(--navy);color:rgba(255,255,255,.7);padding:64px 0 0}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:48px}
-.foot-brand .logo-mark{height:40px;margin-bottom:16px}
-.foot-brand .logo-mark line{stroke:#fff;stroke-width:5}
-.foot-brand p{font-size:.9rem;max-width:280px}
-footer h5{font-family:'Jost';font-weight:500;color:#fff;font-size:1rem;letter-spacing:1px;margin-bottom:18px}
-footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-footer ul a{font-size:.9rem;transition:.25s}
-footer ul a:hover{color:var(--rose)}
-.socials{display:flex;gap:12px;margin-top:16px}
-.socials a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:.3s}
-.socials a:hover{background:linear-gradient(135deg,var(--lilac),var(--rose));transform:translateY(-3px)}
-.socials svg{width:18px;height:18px;fill:#fff}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.5)}
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
 
-/* ---------- FLOATING WHATSAPP ---------- */
-.wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:60px;height:60px;border-radius:50%;
-  background:#25d366;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(37,211,102,.6);transition:.3s;animation:pulse 2.4s infinite}
-.wa-float:hover{transform:scale(1.08)}
-.wa-float svg{width:32px;height:32px;fill:#fff}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5),0 14px 30px -8px rgba(37,211,102,.6)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0),0 14px 30px -8px rgba(37,211,102,.6)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 14px 30px -8px rgba(37,211,102,.6)}}
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
 
-/* ---------- REVEAL ---------- */
-.reveal{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
 
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:960px){
-  .hero .container{grid-template-columns:1fr;text-align:center}
-  .hero-copy{order:2}.hero-visual{order:1}
-  .hero-actions{justify-content:center}
-  .hero p.lead{margin-inline:auto}
-  .hero-emblem{width:260px;height:260px}
-  .hero-emblem .logo-mark{height:96px}
-  .about-wrap,.map-wrap{grid-template-columns:1fr;gap:40px}
-  .cards,.tool-grid{grid-template-columns:repeat(2,1fr)}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .stats-inner{grid-template-columns:repeat(2,1fr);gap:30px}
-}
-@media(max-width:640px){
-  .nav-links,.nav-cta.desk{display:none}
-  .burger{display:flex}
-  .nav-inner{padding:0 10px 0 18px}
-  .brand-text b{font-size:.92rem}
-  .mobile-menu{position:fixed;inset:88px 4% auto 4%;background:rgba(22,34,61,.97);backdrop-filter:blur(14px);
-    border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:22px;z-index:99;display:none;flex-direction:column;gap:6px}
-  .mobile-menu.open{display:flex;animation:rise .3s ease}
-  .mobile-menu a{color:#fff;padding:12px 14px;border-radius:12px;font-size:1rem}
-  .mobile-menu a:hover{background:rgba(255,255,255,.08)}
-  .mobile-menu .btn-primary{margin-top:8px;justify-content:center}
-  .cards,.tool-grid,.pillars{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .section-head{margin-bottom:2.4rem}
-}
-</style>
+        .logo-large {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b89cc4 0%, #d4a5dd 100%);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(184, 156, 196, 0.4);
+        }
+
+        /* SERVIÇOS */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 4rem;
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f4f8 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid #e0e8f0;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6b5b95 0%, #b89cc4 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(26, 42, 78, 0.1);
+            border-color: #6b5b95;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f4f8 100%);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight h4 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: #f8f9fb;
+            border-radius: 10px;
+            border: 1px solid #e0e8f0;
+        }
+
+        .contact-method strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: #6b5b95;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: #1a2a4e;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                margin-top: 100px;
+                min-height: calc(100vh - 100px);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-large {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .services {
+                padding: 3rem 1rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">TF <span>Assessoria</span></div>
+        <nav>
+            <a href="#services">Serviços</a>
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+        </nav>
+    </header>
 
-<!-- reusable logo symbol -->
-<svg style="display:none"><symbol id="tf" viewBox="0 0 120 140">
-  <line x1="26" y1="22" x2="94" y2="22"/>
-  <line x1="52" y1="22" x2="52" y2="120"/>
-  <line x1="70" y1="22" x2="70" y2="120"/>
-  <line x1="70" y1="68" x2="92" y2="68"/>
-</symbol></svg>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-large">TF</div>
+            <h1>Tatiane Fontes</h1>
+            <p class="subtitle">Assessoria Contábil</p>
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 2rem;">Soluções contábeis e tributárias para seu negócio crescer com segurança</p>
+            <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços" class="cta-button">Conversar no WhatsApp</a>
+        </div>
+    </section>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="#top" class="brand">
-      <svg class="logo-mark"><use href="#tf"/></svg>
-      <span class="brand-text"><b>TATIANE FONTES</b><span class="sub">Assessoria Contábil</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#ferramentas">Ferramentas</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#localizacao">Localização</a></li>
-    </ul>
-    <a href="https://wa.me/558498157927?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20Tatiane%20Fontes%20Assessoria." class="nav-cta desk" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3 0 .2.6 2 1.8 3.4 1.7 2.1 3.1 2.7 4.3 3.1.8.3 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/></svg>
-      Falar no WhatsApp
-    </a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-  <nav class="mobile-menu" id="mobileMenu">
-    <a href="#servicos">Serviços</a>
-    <a href="#ferramentas">Ferramentas Úteis</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#localizacao">Localização</a>
-    <a href="https://wa.me/558498157927" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
-  </nav>
-</header>
+    <!-- SERVIÇOS -->
+    <section id="services" class="services">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="section-subtitle">Soluções completas para sua empresa</p>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-grid"></div>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  <div class="container">
-    <div class="hero-copy">
-      <div class="hero-badge"><span class="dot"></span> Contabilidade estratégica e humana</div>
-      <h1>Sua empresa em ordem, <b>seu tempo livre</b> para crescer.</h1>
-      <p class="lead">Assessoria contábil, tributária e trabalhista com atendimento próximo, tecnologia e segurança. Cuidamos dos números para você cuidar do negócio.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/558498157927?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20os%20servi%C3%A7os." class="btn btn-primary" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3 0 .2.6 2 1.8 3.4 1.7 2.1 3.1 2.7 4.3 3.1.8.3 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/></svg>
-          Fale conosco agora
-        </a>
-        <a href="#servicos" class="btn btn-ghost">Conheça os serviços</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-emblem">
-        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-        <div class="glass"><svg class="logo-mark"><use href="#tf"/></svg></div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint"><div class="mouse"></div>Role para descobrir</div>
-</section>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">📊</div>
+                <h3>Contábil</h3>
+                <p>Gestão contábil completa, demonstrações financeiras e análise de resultados para tomada de decisão estratégica.</p>
+            </div>
 
-<!-- STATS -->
-<section class="stats">
-  <div class="container">
-    <div class="stats-inner">
-      <div class="stat reveal"><b data-count="6">6</b><span>Áreas de atuação</span></div>
-      <div class="stat reveal"><b data-count="100">100</b><span>% Foco no cliente</span></div>
-      <div class="stat reveal"><b data-count="24">24</b><span>h de acesso às ferramentas</span></div>
-      <div class="stat reveal"><b>+</b><span>Atendimento próximo e ágil</span></div>
-    </div>
-  </div>
-</section>
+            <div class="service-card fade-in">
+                <div class="service-icon">🧾</div>
+                <h3>Imposto de Renda</h3>
+                <p>Planejamento e declaração de Imposto de Renda Pessoa Jurídica e Pessoa Física com otimização fiscal.</p>
+            </div>
 
-<!-- SERVICES -->
-<section class="section services" id="servicos">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">O que fazemos</span>
-      <h2>Soluções contábeis completas</h2>
-      <p>Todas as áreas que sua empresa precisa, em um só lugar, com atendimento consultivo e personalizado.</p>
-    </div>
-    <div class="cards">
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 12h8M8 16h8M8 8h3"/></svg></div>
-        <h3>Contábil</h3>
-        <p>Escrituração, demonstrações financeiras e análise de resultados para decisões seguras e embasadas.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
-        <h3>Imposto de Renda</h3>
-        <p>Declaração de IRPF e IRPJ com planejamento e otimização fiscal, sem dor de cabeça e dentro da lei.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M7 8l5-5 5 5M5 21h14"/><path d="M4 12h4l-2 5-2-5Zm12 0h4l-2 5-2-5Z"/></svg></div>
-        <h3>Tributário</h3>
-        <p>Planejamento tributário estratégico para reduzir legalmente a carga fiscal e ganhar competitividade.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M17 20a6 6 0 0 0-2-4.5"/></svg></div>
-        <h3>Trabalhista / Pessoal</h3>
-        <p>Folha de pagamento, admissões, rescisões e conformidade trabalhista com total segurança jurídica.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/></svg></div>
-        <h3>Consultoria</h3>
-        <p>Orientação estratégica personalizada para organizar processos e aumentar a rentabilidade do negócio.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
-        <h3>Societário</h3>
-        <p>Abertura, alteração e encerramento de empresas, além de reorganizações e assuntos societários.</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="service-card fade-in">
+                <div class="service-icon">⚖️</div>
+                <h3>Tributário</h3>
+                <p>Planejamento tributário estratégico para reduzir legalmente sua carga fiscal e aumentar competitividade.</p>
+            </div>
 
-<!-- TOOLS -->
-<section class="section tools" id="ferramentas">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Acesso rápido</span>
-      <h2>Ferramentas úteis</h2>
-      <p>Recursos práticos e sempre atualizados, disponíveis 24h para você consultar quando precisar.</p>
-    </div>
-    <div class="tool-grid">
-      <a class="tool reveal" href="https://utilitarios.grupodpg.com.br/agenda/federal" target="_blank" rel="noopener">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
-        <h3>Agenda de Obrigações</h3>
-        <p>Prazos e vencimentos fiscais federais sempre à mão.</p>
-        <span class="arrow">Acessar →</span>
-      </a>
-      <a class="tool reveal" href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/tabelas-praticas" target="_blank" rel="noopener">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
-        <h3>Tabelas Práticas</h3>
-        <p>INSS, IRRF, salário-mínimo e outros índices essenciais.</p>
-        <span class="arrow">Acessar →</span>
-      </a>
-      <a class="tool reveal" href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/certidoes-negativas" target="_blank" rel="noopener">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Certidões Negativas</h3>
-        <p>Emissão e consulta de certidões de regularidade.</p>
-        <span class="arrow">Acessar →</span>
-      </a>
-      <a class="tool reveal" href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/facilitador-contabil" target="_blank" rel="noopener">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/><circle cx="16" cy="16" r="1.2"/></svg></div>
-        <h3>Prática Contábil</h3>
-        <p>Facilitadores e utilitários para o dia a dia contábil.</p>
-        <span class="arrow">Acessar →</span>
-      </a>
-    </div>
-  </div>
-</section>
+            <div class="service-card fade-in">
+                <div class="service-icon">👥</div>
+                <h3>Trabalhista</h3>
+                <p>Gestão de folha de pagamento, conformidade trabalhista e assessoria em relações trabalhistas.</p>
+            </div>
 
-<!-- ABOUT -->
-<section class="section" id="sobre">
-  <div class="container about-wrap">
-    <div class="about-copy reveal">
-      <span class="eyebrow">Quem somos</span>
-      <h2>Contabilidade que caminha ao lado do seu negócio</h2>
-      <p>Na Tatiane Fontes Assessoria Contábil, unimos experiência técnica, tecnologia e um atendimento verdadeiramente próximo. Mais do que cumprir obrigações, entregamos clareza e tranquilidade para você decidir com segurança.</p>
-      <p>Atendemos empresas de diversos segmentos com soluções sob medida, linguagem simples e o compromisso de estar presente em cada etapa da jornada.</p>
-    </div>
-    <div class="pillars reveal">
-      <div class="pillar">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 15.5 7.1 17.2 8 11.7l-4-3.9L9.5 7 12 2Z"/></svg></div>
-        <h4>Expert</h4><p>Equipe qualificada e sempre atualizada com a legislação.</p>
-      </div>
-      <div class="pillar">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
-        <h4>Próxima</h4><p>Relacionamento humano, consultivo e personalizado.</p>
-      </div>
-      <div class="pillar">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
-        <h4>Confiável</h4><p>Ética, sigilo e segurança em cada informação.</p>
-      </div>
-      <div class="pillar">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
-        <h4>Moderna</h4><p>Tecnologia para mais eficiência, agilidade e precisão.</p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="service-card fade-in">
+                <div class="service-icon">💡</div>
+                <h3>Consultoria</h3>
+                <p>Consultoria estratégica personalizada para otimizar processos e aumentar a rentabilidade do seu negócio.</p>
+            </div>
 
-<!-- PARTNERS -->
-<section class="section partners">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Confiança</span>
-      <h2>Alguns de nossos parceiros</h2>
-      <p>Empresas que caminham conosco em busca de crescimento sustentável.</p>
-    </div>
-    <div class="partner-row reveal">
-      <div class="partner"><small>Parceiro</small>Sua Marca</div>
-      <div class="partner"><small>Parceiro</small>Sua Marca</div>
-      <div class="partner"><small>Parceiro</small>Sua Marca</div>
-      <div class="partner"><small>Parceiro</small>Sua Marca</div>
-      <div class="partner"><small>Parceiro</small>Sua Marca</div>
-    </div>
-  </div>
-</section>
+            <div class="service-card fade-in">
+                <div class="service-icon">🏢</div>
+                <h3>Societário</h3>
+                <p>Assessoria em constituição de empresas, fusões, aquisições e reorganizações societárias.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- LOCATION + CONTACT -->
-<section class="section" id="localizacao">
-  <div class="container map-wrap">
-    <div class="map-info reveal">
-      <span class="eyebrow">Fale conosco</span>
-      <h2>Vamos conversar?</h2>
-      <div class="contact-line">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-3.6-7.2L21 4l-1 3.4A8.9 8.9 0 0 1 21 12Z"/><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3"/></svg></div>
-        <div><b>WhatsApp</b><a href="https://wa.me/558498157927" target="_blank" rel="noopener">(84) 9 8157-9927</a></div>
-      </div>
-      <div class="contact-line">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg></div>
-        <div><b>Telefone</b><a href="tel:+558420100067">(84) 2010-0067</a></div>
-      </div>
-      <div class="contact-line">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
-        <div><b>E-mail</b><a href="mailto:contato@tatianefontes.com">contato@tatianefontes.com</a></div>
-      </div>
-      <div class="contact-line">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div><b>Instagram</b><a href="https://www.instagram.com/tatianefontesassessoria/" target="_blank" rel="noopener">@tatianefontesassessoria</a></div>
-      </div>
-    </div>
-    <div class="map-frame reveal">
-      <iframe src="https://www.google.com/maps?q=Tatiane+Fontes+Assessoria+Contabil&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização Tatiane Fontes Assessoria Contábil"></iframe>
-    </div>
-  </div>
-</section>
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <h2 class="section-title">Por Que Escolher a Tatiane Fontes?</h2>
 
-<!-- CTA BANNER -->
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="cta-banner reveal">
-      <h2>Pronto para deixar a contabilidade nas melhores mãos?</h2>
-      <p>Fale agora com nossa equipe pelo WhatsApp e descubra como podemos simplificar a gestão da sua empresa.</p>
-      <a href="https://wa.me/558498157927?text=Ol%C3%A1!%20Quero%20uma%20conversa%20sobre%20os%20servi%C3%A7os%20da%20Tatiane%20Fontes%20Assessoria." class="btn btn-primary" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3 0 .2.6 2 1.8 3.4 1.7 2.1 3.1 2.7 4.3 3.1.8.3 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/></svg>
-        Iniciar conversa
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="about-content">
+            <p>Com anos de experiência no mercado contábil, somos especialistas em oferecer soluções estratégicas que vão além da conformidade fiscal. Nossa abordagem é consultiva, próxima e totalmente personalizada às necessidades da sua empresa.</p>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container foot-grid">
-    <div class="foot-brand">
-      <svg class="logo-mark"><use href="#tf"/></svg>
-      <p>Assessoria contábil, tributária e trabalhista com atendimento próximo e estratégico.</p>
-    </div>
-    <div>
-      <h5>Navegação</h5>
-      <ul>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#ferramentas">Ferramentas Úteis</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#localizacao">Localização</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Ferramentas</h5>
-      <ul>
-        <li><a href="https://utilitarios.grupodpg.com.br/agenda/federal" target="_blank" rel="noopener">Agenda de Obrigações</a></li>
-        <li><a href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/tabelas-praticas" target="_blank" rel="noopener">Tabelas Práticas</a></li>
-        <li><a href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/certidoes-negativas" target="_blank" rel="noopener">Certidões Negativas</a></li>
-        <li><a href="https://utilitarios.grupodpg.com.br/utilitarios/categoria/facilitador-contabil" target="_blank" rel="noopener">Prática Contábil</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contato</h5>
-      <ul>
-        <li><a href="https://wa.me/558498157927" target="_blank" rel="noopener">WhatsApp: (84) 9 8157-9927</a></li>
-        <li><a href="tel:+558420100067">Telefone: (84) 2010-0067</a></li>
-        <li><a href="mailto:contato@tatianefontes.com">contato@tatianefontes.com</a></li>
-      </ul>
-      <div class="socials">
-        <a href="https://wa.me/558498157927" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 12.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3 0 .2.6 2 1.8 3.4 1.7 2.1 3.1 2.7 4.3 3.1 1.7.5 2.4.4 3-.1.4-.4 1-1.1 1.1-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg></a>
-        <a href="https://www.instagram.com/tatianefontesassessoria/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.3 1.3-.4 2.3-.5C9 2 9.3 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.8 6.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg></a>
-      </div>
-    </div>
-  </div>
-  <div class="foot-bottom">© <span id="year"></span> Tatiane Fontes Assessoria Contábil — Todos os direitos reservados.</div>
-</footer>
+            <div class="highlights">
+                <div class="highlight fade-in">
+                    <h4>🎯 Expert</h4>
+                    <p>Profissionais altamente qualificados e atualizados</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>🤝 Próxima</h4>
+                    <p>Relacionamento consultivo e personalizado</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>💼 Confiável</h4>
+                    <p>Ética, segurança e sigilo profissional garantido</p>
+                </div>
+                <div class="highlight fade-in">
+                    <h4>⚡ Moderna</h4>
+                    <p>Uso de tecnologia para eficiência e precisão</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FLOATING WHATSAPP -->
-<a class="wa-float" href="https://wa.me/558498157927?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 12.4c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-1.5-.7-2.4-1.3-3.4-3-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-.9 2.1-.9 2.3 0 .2.6 2 1.8 3.4 1.7 2.1 3.1 2.7 4.3 3.1 1.7.5 2.4.4 3-.1.4-.4 1-1.1 1.1-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg>
-</a>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Vamos Conversar?</h2>
+        <p>Estamos prontos para ajudar seu negócio a crescer com segurança fiscal e estratégia tributária inteligente.</p>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+        <div class="contact-methods">
+            <div class="contact-method fade-in">
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços">(84) 2010-0067</a>
+            </div>
+            <div class="contact-method fade-in">
+                <strong>Email</strong>
+                <a href="mailto:tatiane.fontes@tatianefontes.com">tatiane.fontes@tatianefontes.com</a>
+            </div>
+            <div class="contact-method fade-in">
+                <strong>Telefone</strong>
+                <a href="tel:+558420100067">(84) 2010-0067</a>
+            </div>
+        </div>
 
-const nav = document.querySelector('.nav-inner');
-addEventListener('scroll',()=>{
-  if(scrollY>20){nav.style.height='62px';nav.style.background='rgba(22,34,61,.92)';}
-  else{nav.style.height='74px';nav.style.background='rgba(22,34,61,.72)';}
-});
+        <a href="https://wa.me/5584920100067?text=Olá%20Tatiane,%20gostaria%20de%20conhecer%20seus%20serviços" class="cta-button">Iniciar Conversa</a>
+    </section>
 
-const burger=document.getElementById('burger'), menu=document.getElementById('mobileMenu');
-burger.addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Tatiane Fontes Assessoria Contábil. Todos os direitos reservados.</p>
+    </footer>
 
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-const cs=new IntersectionObserver((es)=>es.forEach(e=>{
-  if(e.isIntersecting){const el=e.target,end=+el.dataset.count;let n=0;
-    const step=Math.max(1,Math.floor(end/40));
-    const t=setInterval(()=>{n+=step;if(n>=end){n=end;clearInterval(t);}el.textContent=n;},28);
-    cs.unobserve(el);}
-}),{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>cs.observe(el));
-</script>
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
