@@ -1,7 +1,7 @@
 {
   "crons": [
-    { "path": "/api/post-instagram", "schedule": "0 12 * * *" },
-    { "path": "/api/post-instagram", "schedule": "0 21 * * *" }
+    { "path": "/api/post-instagram", "schedule": "0 9 * * *" },
+    { "path": "/api/post-instagram", "schedule": "0 18 * * *" }
   ],
   "functions": {
     "api/card.js": {
