@@ -261,6 +261,9 @@ footer ul a:hover{color:var(--blue-light)}
   .foot-grid{grid-template-columns:1fr}
   .section-head{margin-bottom:2.4rem}
 }
+.float-login{position:fixed;bottom:100px;right:24px;width:56px;height:56px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:all .3s;z-index:999}
+.float-login:hover{transform:scale(1.1);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.float-login svg{width:24px;height:24px;fill:#fff}
 </style>
 </head>
 <body>
@@ -631,5 +634,11 @@ document.querySelectorAll('[data-count]').forEach(el=>cs.observe(el));
   });
 })();
 </script>
+
+<!-- BOTÃO FLUTUANTE LOGIN ERP -->
+<a class="float-login" href="https://squid-app-bnbl8.ondigitalocean.app/login" target="_blank" rel="noopener" title="Login ERP Colaboradores">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11c0-3.3-4.5-5-9-5s-9 1.7-9 5v3h18v-3z"/></svg>
+</a>
+
 </body>
 </html>
