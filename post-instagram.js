@@ -14,13 +14,6 @@ const redis = new Redis({
 });
 
 export default async function handler(req, res) {
-  // autoriza cron (sem autenticação pois vercel não passa CRON_SECRET no header) ou ?key=CRON_SECRET para testes manuais
-  const secret = process.env.CRON_SECRET;
-  const key = (req.query && req.query.key) || '';
-  if (key && key !== secret) {
-    return res.status(401).json({ ok: false, error: 'unauthorized' });
-  }
-
   try {
     const token = await getToken();
     const igId = await getIgUserId(token);
