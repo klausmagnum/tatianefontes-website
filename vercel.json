@@ -6,6 +6,9 @@
   "functions": {
     "api/card.js": {
       "includeFiles": "assets/**"
+    },
+    "api/post-instagram.js": {
+      "maxDuration": 300
     }
   }
 }
