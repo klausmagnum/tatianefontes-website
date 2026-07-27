@@ -140,11 +140,21 @@ async function getIgUserId(token) {
 
 // ---------- publicação ----------
 async function igCreateMedia(igId, token, imageUrl, caption) {
-  const body = new URLSearchParams({ image_url: imageUrl, caption, access_token: token });
-  const r = await fetch(`${GRAPH}/v21.0/${igId}/media`, { method: 'POST', body });
-  const j = await r.json();
-  if (!r.ok || !j.id) throw new Error('criar mídia: ' + JSON.stringify(j));
-  return j.id;
+  try {
+    console.log('[CRON] Tentando criar mídia... URL:', imageUrl.substring(0, 50) + '...');
+    const body = new URLSearchParams({ image_url: imageUrl, caption, access_token: token });
+    console.log('[CRON] Enviando para Instagram...');
+    const r = await fetch(`${GRAPH}/v21.0/${igId}/media`, { method: 'POST', body });
+    console.log('[CRON] Resposta recebida:', r.status);
+    const j = await r.json();
+    console.log('[CRON] JSON parseado:', j);
+    if (!r.ok || !j.id) throw new Error('criar mídia: ' + JSON.stringify(j));
+    console.log('[CRON] Mídia criada com ID:', j.id);
+    return j.id;
+  } catch (e) {
+    console.log('[CRON] ERRO ao criar mídia:', e.message);
+    throw e;
+  }
 }
 
 async function igPublish(igId, token, creationId) {
