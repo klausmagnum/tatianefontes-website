@@ -56,7 +56,7 @@ export default async function handler(req, res) {
     const tag = TAGS[Math.floor(Math.random() * TAGS.length)];
     console.log('[CRON] Estilo definido:', { variant, bg, tag });
 
-    const base = `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
+    const base = 'https://www.tatianefontes.com';
     console.log('[CRON] Base URL:', base);
 
     // busca foto do Pexels baseado na manchete
