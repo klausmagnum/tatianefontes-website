@@ -15,6 +15,12 @@ const redis = new Redis({
 
 export default async function handler(req, res) {
   try {
+    // rate limit: máximo 1 postagem a cada 5 minutos para evitar spam
+    const lastPostTime = await redis.get('ig_last_post_time');
+    if (lastPostTime && Date.now() - Number(lastPostTime) < 300000) {
+      return res.status(429).json({ ok: false, error: 'rate limited - máximo 1 postagem a cada 5 minutos' });
+    }
+
     const token = await getToken();
     const igId = await getIgUserId(token);
     const items = await fetchFeed();
@@ -57,6 +63,7 @@ export default async function handler(req, res) {
     const mediaId = await igPublish(igId, token, creationId);
 
     await redis.sadd('ig_posted', chosen.id);
+    await redis.set('ig_last_post_time', Date.now());
 
     return res.status(200).json({ ok: true, posted: chosen.title, mediaId, style: { variant, bg, tag } });
   } catch (e) {
