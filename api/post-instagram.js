@@ -14,59 +14,89 @@ const redis = new Redis({
 });
 
 export default async function handler(req, res) {
-  // segurança: só o cron da Vercel (Bearer CRON_SECRET) ou ?key=CRON_SECRET
-  const secret = process.env.CRON_SECRET;
-  if (secret) {
-    const auth = req.headers.authorization || '';
-    const key = (req.query && req.query.key) || '';
-    if (auth !== `Bearer ${secret}` && key !== secret) {
-      return res.status(401).json({ ok: false, error: 'unauthorized' });
-    }
-  }
-
   try {
+    console.log('[CRON] Iniciando postagem Instagram...');
+
+    // rate limit: máximo 1 postagem a cada 5 minutos para evitar spam
+    const lastPostTime = await redis.get('ig_last_post_time');
+    if (lastPostTime && Date.now() - Number(lastPostTime) < 300000) {
+      console.log('[CRON] Rate limit ativo, bloqueado');
+      return res.status(429).json({ ok: false, error: 'rate limited - máximo 1 postagem a cada 5 minutos' });
+    }
+    console.log('[CRON] Rate limit OK');
+
+    console.log('[CRON] Buscando token...');
     const token = await getToken();
+    console.log('[CRON] Token obtido:', token ? 'SIM' : 'NÃO');
+
+    console.log('[CRON] Buscando ID do usuário...');
     const igId = await getIgUserId(token);
+    console.log('[CRON] ID do usuário:', igId);
+
+    console.log('[CRON] Buscando feed RSS...');
     const items = await fetchFeed();
+    console.log('[CRON] Feed obtido:', items.length, 'notícias');
 
     // acha a notícia mais nova ainda não postada
     let chosen = null;
     for (const it of items) {
-      if (!(await redis.sismember('ig_posted', it.id))) { chosen = it; break; }
+      const alreadyPosted = await redis.sismember('ig_posted', it.id);
+      console.log('[CRON] Verificando notícia:', it.id, '- Já postada?', alreadyPosted);
+      if (!alreadyPosted) { chosen = it; break; }
     }
-    if (!chosen) return res.status(200).json({ ok: true, skipped: 'nenhuma notícia nova' });
+    if (!chosen) {
+      console.log('[CRON] Nenhuma notícia nova encontrada');
+      return res.status(200).json({ ok: true, skipped: 'nenhuma notícia nova' });
+    }
+    console.log('[CRON] Notícia escolhida:', chosen.title);
 
     // estilo sorteado (fundo + cor + pílula)
     const variant = Math.floor(Math.random() * 4);
     const bg = BGS[Math.floor(Math.random() * BGS.length)];
     const tag = TAGS[Math.floor(Math.random() * TAGS.length)];
+    console.log('[CRON] Estilo definido:', { variant, bg, tag });
 
     const base = `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
+    console.log('[CRON] Base URL:', base);
 
     // busca foto do Pexels baseado na manchete
     let photoUrl = '';
     try {
       const keyword = extractKeyword(chosen.title);
+      console.log('[CRON] Keyword extraída:', keyword);
       const photoRes = await fetch(`${base}/api/photo?q=${encodeURIComponent(keyword)}`);
       const photoData = await photoRes.json();
       if (photoData.ok && photoData.photo) photoUrl = photoData.photo;
-    } catch { /* se falhar, segue sem foto */ }
+      console.log('[CRON] Foto obtida:', photoUrl ? 'SIM' : 'NÃO');
+    } catch (e) {
+      console.log('[CRON] Erro ao buscar foto:', e.message);
+    }
 
     const imgUrl = `${base}/api/card?` + new URLSearchParams({
       t: chosen.title, s: chosen.desc, tag, v: String(variant), bg,
       p: photoUrl || '',
     }).toString();
+    console.log('[CRON] Imagem URL gerada');
 
     const caption = buildCaption(chosen);
+    console.log('[CRON] Caption gerada');
 
+    console.log('[CRON] Criando mídia no Instagram...');
     const creationId = await igCreateMedia(igId, token, imgUrl, caption);
+    console.log('[CRON] Mídia criada:', creationId);
 
     // aguarda processamento da imagem (Instagram precisa de tempo)
+    console.log('[CRON] Aguardando 2s...');
     await new Promise(r => setTimeout(r, 2000));
 
+    console.log('[CRON] Publicando mídia...');
     const mediaId = await igPublish(igId, token, creationId);
+    console.log('[CRON] Mídia publicada:', mediaId);
 
+    console.log('[CRON] Salvando no Redis...');
     await redis.sadd('ig_posted', chosen.id);
+    await redis.set('ig_last_post_time', Date.now());
+    console.log('[CRON] Salvo no Redis com sucesso!');
 
     return res.status(200).json({ ok: true, posted: chosen.title, mediaId, style: { variant, bg, tag } });
   } catch (e) {
