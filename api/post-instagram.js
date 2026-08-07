@@ -78,27 +78,45 @@ export default async function handler(req, res) {
     }).toString();
     console.log('[CRON] Imagem URL gerada');
 
+    const storyUrl = `${base}/api/story?` + new URLSearchParams({
+      t: chosen.title, s: chosen.desc, tag, v: String(variant), bg,
+      p: photoUrl || '',
+    }).toString();
+    console.log('[CRON] Story URL gerada');
+
     const caption = buildCaption(chosen);
     console.log('[CRON] Caption gerada');
 
-    console.log('[CRON] Criando mídia no Instagram...');
+    console.log('[CRON] Criando mídia no Instagram (FEED)...');
     const creationId = await igCreateMedia(igId, token, imgUrl, caption);
-    console.log('[CRON] Mídia criada:', creationId);
+    console.log('[CRON] Mídia Feed criada:', creationId);
 
     // aguarda processamento da imagem (Instagram precisa de tempo)
     console.log('[CRON] Aguardando 2s...');
     await new Promise(r => setTimeout(r, 2000));
 
-    console.log('[CRON] Publicando mídia...');
+    console.log('[CRON] Publicando no Feed...');
     const mediaId = await igPublish(igId, token, creationId);
-    console.log('[CRON] Mídia publicada:', mediaId);
+    console.log('[CRON] Feed publicado:', mediaId);
+
+    // Agora publica nos Stories (mesma notícia, formato vertical)
+    console.log('[CRON] Criando mídia no Instagram (STORY)...');
+    const storyCreationId = await igCreateMediaStory(igId, token, storyUrl);
+    console.log('[CRON] Mídia Story criada:', storyCreationId);
+
+    console.log('[CRON] Aguardando 2s...');
+    await new Promise(r => setTimeout(r, 2000));
+
+    console.log('[CRON] Publicando Story...');
+    const storyId = await igPublishStory(igId, token, storyCreationId);
+    console.log('[CRON] Story publicado:', storyId);
 
     console.log('[CRON] Salvando no Redis...');
     await redis.sadd('ig_posted', chosen.id);
     await redis.set('ig_last_post_time', Date.now());
     console.log('[CRON] Salvo no Redis com sucesso!');
 
-    return res.status(200).json({ ok: true, posted: chosen.title, mediaId, style: { variant, bg, tag } });
+    return res.status(200).json({ ok: true, posted: chosen.title, mediaId, storyId, style: { variant, bg, tag } });
   } catch (e) {
     return res.status(200).json({ ok: false, error: String(e && e.message || e) });
   }
@@ -163,6 +181,42 @@ async function igPublish(igId, token, creationId) {
   const j = await r.json();
   if (!r.ok || !j.id) throw new Error('publicar: ' + JSON.stringify(j));
   return j.id;
+}
+
+// ---------- stories ----------
+async function igCreateMediaStory(igId, token, imageUrl) {
+  try {
+    console.log('[CRON] Tentando criar story... URL:', imageUrl.substring(0, 50) + '...');
+    const body = new URLSearchParams({ image_url: imageUrl, access_token: token, media_type: 'STORIES' });
+    console.log('[CRON] Enviando para Instagram (STORY)...');
+    const r = await fetch(`${GRAPH}/v21.0/${igId}/media`, { method: 'POST', body });
+    console.log('[CRON] Resposta recebida:', r.status);
+    const j = await r.json();
+    console.log('[CRON] JSON parseado:', j);
+    if (!r.ok || !j.id) throw new Error('criar story: ' + JSON.stringify(j));
+    console.log('[CRON] Story criado com ID:', j.id);
+    return j.id;
+  } catch (e) {
+    console.log('[CRON] ERRO ao criar story:', e.message);
+    throw e;
+  }
+}
+
+async function igPublishStory(igId, token, creationId) {
+  try {
+    console.log('[CRON] Publicando story...');
+    const body = new URLSearchParams({ creation_id: creationId, access_token: token });
+    const r = await fetch(`${GRAPH}/v21.0/${igId}/media_publish`, { method: 'POST', body });
+    console.log('[CRON] Resposta story:', r.status);
+    const j = await r.json();
+    console.log('[CRON] JSON story:', j);
+    if (!r.ok || !j.id) throw new Error('publicar story: ' + JSON.stringify(j));
+    console.log('[CRON] Story publicado com ID:', j.id);
+    return j.id;
+  } catch (e) {
+    console.log('[CRON] ERRO ao publicar story:', e.message);
+    throw e;
+  }
 }
 
 // ---------- feed ----------
